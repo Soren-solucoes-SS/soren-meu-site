@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: prod
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: curriculo-deploy
+  namespace: prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: curriculo
+  template:
+    metadata:
+      labels:
+        app: curriculo
+    spec:
+      # Descomente se imagem for PRIVADA no Docker Hub:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: curriculo
+          image: docker.io/deividferraz/soren-curriculo:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_URLS
+              value: http://+:8080
+          resources:
+            requests: { cpu: 50m, memory: 128Mi }
+            limits:   { cpu: 100m, memory: 256Mi }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: curriculo-svc
+  namespace: prod
+spec:
+  type: LoadBalancer
+  selector:
+    app: curriculo
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
