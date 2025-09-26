@@ -1,14 +1,17 @@
-﻿/* ===== Variáveis e base ===== */
-:root {
-    --bg: #f6fbff;
-    --fg: #0a1b2b;
-    --muted: #4d6b8c;
-    --brand: #60a5fa;
-    --brand-600: #3b82f6;
-    --brand-50: #eaf4ff;
-    --card: #ffffff;
+﻿:root {
+    /* Base em roxos */
+    --bg: #F7F5FF; /* fundo muito claro, levemente violeta */
+    --fg: #0B1020; /* texto principal quase preto azulado */
+    --muted: #5B5E7A; /* texto secundário */
+    --brand: #7C3AED; /* violet-600 */
+    --brand-600: #6D28D9; /* violet-700, para hovers/contraste */
+    --brand-50: #EDE9FE; /* violet-50, chips/badges */
+    --card: #FFFFFF;
     --radius: 18px;
-    --shadow: 0 10px 30px rgba(16, 24, 40, .08);
+    --shadow: 0 10px 30px rgba(16,24,40,.08);
+    /* Acentos azuis suaves (detalhes) */
+    --accent: #60A5FA; /* blue-400 */
+    --accent-50: #DBEAFE; /* blue-100 */
 }
 
 * {
@@ -44,8 +47,8 @@ header {
     top: 0;
     z-index: 10;
     backdrop-filter: saturate(140%) blur(6px);
-    background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.35));
-    border-bottom: 1px solid rgba(99,102,241,.08);
+    background: linear-gradient(180deg, rgba(255,255,255,.8), rgba(237,233,254,.5)); /* branco → violet-50 */
+    border-bottom: 1px solid rgba(124,58,237,.12);
 }
 
 .nav {
@@ -133,8 +136,8 @@ header {
 
     .btn.secondary {
         background: #fff;
-        color: var(--brand-600);
-        border-color: #dbeafe
+        color: var(--brand);
+        border-color: var(--brand-50);
     }
 
     .btn:hover {
@@ -157,19 +160,17 @@ header {
         border-radius: 12px
     }
 
-/* ===== Curva ===== */
 .svg-curve {
     display: block;
     width: 100%;
     height: auto;
-    margin-top: 24px
+    margin-top: 50px
 }
 
     .svg-curve path {
         fill: url(#curveGrad)
     }
 
-/* ===== Seções ===== */
 section {
     max-width: 1100px;
     margin: 0 auto;
@@ -186,7 +187,6 @@ section {
         color: var(--muted)
     }
 
-/* ===== Projetos ===== */
 .grid {
     display: grid;
     gap: 22px;
@@ -234,7 +234,6 @@ section {
     }
 }
 
-/* ===== Artigos ===== */
 .articles {
     display: grid;
     gap: 12px
@@ -260,7 +259,6 @@ section {
         font-size: .95rem
     }
 
-/* ===== Certificações ===== */
 .certs {
     display: grid;
     grid-template-columns: repeat(1,1fr);
@@ -289,7 +287,6 @@ section {
     }
 }
 
-/* ===== Rodapé ===== */
 footer {
     padding: 30px 20px;
     border-top: 1px solid #e7effc;
@@ -311,7 +308,6 @@ footer {
     gap: 14px
 }
 
-/* === Badges / Skills === */
 .badges {
     display: flex;
     flex-wrap: wrap;
@@ -329,7 +325,6 @@ footer {
     font-size: .95rem;
 }
 
-/* === KPIs animadas === */
 .kpis {
     display: grid;
     grid-template-columns: repeat(1,1fr);
@@ -361,7 +356,6 @@ footer {
     }
 }
 
-/* === API Playground === */
 .api-grid {
     display: grid;
     grid-template-columns: repeat(1,1fr);
@@ -421,23 +415,20 @@ footer {
     opacity: .4
 }
 
-/* === NOW BADGE (status atual) === */
-/* badge "atualmente" mais clean */
 .now-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     padding: 6px 10px;
     border-radius: 999px;
-    background: #eef6ff;
-    border: 1px solid #dbeafe;
-    font-weight: 600;
+    background: var(--brand-50);
+    border: 1px solid #DDD6FE font-weight: 600;
     color: #0a1b2b;
     margin: 0 0 10px;
 }
 
     .now-badge a {
-        color: var(--brand-600);
+        color: var(--brand);
         text-decoration: none
     }
 
@@ -455,7 +446,6 @@ footer {
             height: 1em
         }
 
-/* dá mais respiro no hero em telas pequenas */
 @media (max-width: 720px) {
     .hero-inner {
         grid-template-columns: 1fr;
@@ -499,7 +489,6 @@ footer {
     line-height: 1
 }
 
-/* estados do botão de copiar */
 .copy-btn.copied {
     background: var(--brand-600);
     color: #fff;
@@ -510,51 +499,45 @@ footer {
     display: none;
 }
 
-/* === Watermark lateral com a foto (bem suave) === */
 :root {
     --wm-size: 420px;
-    --wm-opacity: .085; /* era .06 */
+    --wm-opacity: .085; 
 }
 
 body {
     position: relative;
 }
 
-    /* cria duas marcas d’água fixas no fundo */
     body::before,
     body::after {
         content: "";
-        position: fixed; /* fica preso à viewport (não rola junto) */
+        position: fixed; 
         width: var(--wm-size);
         height: var(--wm-size);
         background: url("/images/perfil.jpeg") center/cover no-repeat;
         opacity: var(--wm-opacity);
-        filter: grayscale(85%) contrast(95%) brightness(1.08);
-        pointer-events: none; /* não bloqueia cliques */
-        z-index: 0; /* fica atrás do conteúdo */
+        filter: grayscale(70%) hue-rotate(265deg) saturate(120%) brightness(1.05);
+        pointer-events: none; 
+        z-index: 0; 
     }
 
-    /* esquerda */
     body::before {
         left: 40px;
         top: 140px;
         transform: rotate(-6deg);
     }
 
-    /* direita (espelhada) */
     body::after {
         right: 40px;
         top: 220px;
         transform: scaleX(-1) rotate(5deg);
     }
 
-/* garante que header/main/footer fiquem acima da marca d’água */
 header, main, footer, .hero, section {
     position: relative;
     z-index: 1;
 }
 
-/* responsivo: reduz/oculta em telas menores */
 @media (max-width: 1200px) {
     :root {
         --wm-size: 340px;
@@ -582,7 +565,6 @@ header, main, footer, .hero, section {
     body::after {
         display: none;
     }
-    /* oculta a da direita */
     :root {
         --wm-size: 220px;
     }
@@ -591,15 +573,12 @@ header, main, footer, .hero, section {
         left: -10px;
         top: 180px;
     }
-    /* joga mais pra borda */
 }
-/* --- Footer compacto e centralizado (override) --- */
 
-/* curva menor */
 .footer-curve {
     display: block;
     width: 100%;
-    height: 60px; /* antes ~90px */
+    height: 60px;
     margin: 0 0 -4px;
 }
 

@@ -1,0 +1,41 @@
+<!-- wwwroot/images/favicon.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <!-- roxos principais + acentos azulados -->
+    <linearGradient id="owlGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8B5CF6"></stop>   <!-- violet-500 -->
+      <stop offset="100%" stop-color="#7C3AED"></stop>   <!-- violet-600 -->
+    </linearGradient>
+    <linearGradient id="owlBelly" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EDE9FE"></stop>    <!-- violet-50 -->
+      <stop offset="100%" stop-color="#DBEAFE"></stop>   <!-- blue-100 clarinho -->
+    </linearGradient>
+  </defs>
+
+  <!-- corpo -->
+  <path d="M256 64c-88 0-160 72-160 160 0 110 80 192 160 224 80-32 160-114 160-224 0-88-72-160-160-160z" fill="url(#owlGrad)"></path>
+
+  <!-- barriga clara -->
+  <ellipse cx="256" cy="300" rx="120" ry="110" fill="url(#owlBelly)"></ellipse>
+
+  <!-- olhos -->
+  <circle cx="196" cy="210" r="44" fill="#0B1020"></circle>
+  <circle cx="316" cy="210" r="44" fill="#0B1020"></circle>
+  <circle cx="196" cy="210" r="18" fill="#FFFFFF"></circle>
+  <circle cx="316" cy="210" r="18" fill="#FFFFFF"></circle>
+
+  <!-- pálpebras (um charme) -->
+  <path d="M152 196c28-20 60-20 88 0" fill="none" stroke="#C4B5FD" stroke-width="10" stroke-linecap="round"></path>
+  <path d="M272 196c28-20 60-20 88 0" fill="none" stroke="#C4B5FD" stroke-width="10" stroke-linecap="round"></path>
+
+  <!-- bico -->
+  <path d="M242 232l14 26 14-26c-10-6-18-6-28 0z" fill="#F59E0B"></path>
+
+  <!-- peninhas de detalhe -->
+  <path d="M200 330c18 10 36 10 56 0" fill="none" stroke="#8B5CF6" stroke-width="8" stroke-linecap="round"></path>
+  <path d="M228 356c14 8 28 8 44 0" fill="none" stroke="#60A5FA" stroke-width="6" stroke-linecap="round"></path>
+
+  <!-- orelhas/tufo -->
+  <path d="M176 120l-36-20c8 28 22 44 36 50" fill="#7C3AED"></path>
+  <path d="M336 120l36-20c-8 28-22 44-36 50" fill="#7C3AED"></path>
+</svg>

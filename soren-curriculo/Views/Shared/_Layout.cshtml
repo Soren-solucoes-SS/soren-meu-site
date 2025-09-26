@@ -6,8 +6,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@(ViewData["Title"] ?? "Meu Portfólio")</title>
-    <link rel="icon" href="~/favicon.ico" />
+    <title>@(ViewData["Title"] ?? "Deivao dev")</title>
+    <!-- Favicon multi-size -->
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon" asp-append-version="true">
+
+    <!-- PNGs com transparência -->
+    <link rel="icon" type="image/png" sizes="32x32" href="~/images/iconbase.svg" asp-append-version="true">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/images/iconbase.svg" asp-append-version="true">
+
+    <!-- Apple / iOS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/images/apple-touch-icon.png" asp-append-version="true">
 
     <!-- Fonte e CSS do portfólio -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,9 +48,10 @@
         <svg class="footer-curve" viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
             <defs>
                 <linearGradient id="footerGrad" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stop-color="#cfe6ff" />
-                    <stop offset="100%" stop-color="#b9d5ff" />
+                    <stop offset="0%" stop-color="#E9D5FF" /><!-- violet-200 -->
+                    <stop offset="100%" stop-color="#DBEAFE" /><!-- blue-100 -->
                 </linearGradient>
+
             </defs>
             <path d="M-20,120 C 220,20 540,20 720,20 C 900,20 1220,20 1460,120 L1460,0 L-20,0 Z" fill="url(#footerGrad)" />
         </svg>
