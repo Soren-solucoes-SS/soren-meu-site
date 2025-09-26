@@ -1,0 +1,91 @@
+﻿@{
+    Layout = null; // layout raiz
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@(ViewData["Title"] ?? "Meu Portfólio")</title>
+    <link rel="icon" href="~/favicon.ico" />
+
+    <!-- Fonte e CSS do portfólio -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/portfolio.css" asp-append-version="true" />
+
+    @RenderSection("Head", required: false)
+</head>
+<body>
+    <!-- Header padrão (combina com o CSS que enviei) -->
+    <header>
+        <nav class="nav" aria-label="principal">
+            <div class="brand" aria-label="logo">
+                <span class="dot" aria-hidden="true"></span>
+                <img src="~/images/perfil.jpeg" alt="Foto de Deivid Ferraz" class="avatar" />
+                <b>@(ViewData["Brand"] ?? "Deivid Ferraz")</b>
+            </div>
+            <div class="links">
+                <a href="~/#work">Meus Trabalhos</a>
+                <a href="~/#articles">Artigos</a>
+                <a href="~/#certs">Certificações</a>
+                <a href="~/#contato">Contato</a>
+            </div>
+        </nav>
+    </header>
+
+    @RenderBody()
+    <footer class="site-footer" id="contato" aria-label="contato">
+        <svg class="footer-curve" viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+                <linearGradient id="footerGrad" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#cfe6ff" />
+                    <stop offset="100%" stop-color="#b9d5ff" />
+                </linearGradient>
+            </defs>
+            <path d="M-20,120 C 220,20 540,20 720,20 C 900,20 1220,20 1460,120 L1460,0 L-20,0 Z" fill="url(#footerGrad)" />
+        </svg>
+
+        <div class="foot wrap">
+            <div class="f-center">
+                <p class="foot-title">Redes</p>
+
+                <p class="social-links">
+                    <a class="social-link" href="https://api.whatsapp.com/send?phone=5511968580094&text=Ol%C3%A1%2C%20vim%20pelo%20seu%20site!" target="_blank" rel="noopener" aria-label="WhatsApp">
+                        <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor" d="M.057 24l1.687-6.163A11.867 11.867 0 0 1 0 12.005C0 5.373 5.373 0 12.005 0 18.637 0 24 5.373 24 12.005 24 18.637 18.637 24 12.005 24a11.9 11.9 0 0 1-5.614-1.44L.057 24zm6.597-3.807c1.676.995 3.28 1.591 5.35 1.593 5.476.003 9.946-4.466 9.949-9.942C21.957 6.367 17.49 1.9 12.013 1.9 6.537 1.9 2.067 6.37 2.068 11.846c.001 2.121.688 3.534 1.843 5.124l-.97 3.562 3.713-.338zm11.387-5.47c-.074-.124-.272-.198-.57-.347-.297-.149-1.761-.868-2.035-.967-.272-.099-.471-.149-.67.149-.198.297-.768.967-.94 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.149-.173.198-.297.297-.496.099-.198.05-.372-.025-.521-.074-.149-.669-1.612-.916-2.207-.242-.58-.487-.502-.669-.512l-.57-.01c-.198 0-.521.074-.793.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.761-.719 2.011-1.413.248-.694.248-1.288.173-1.413z" /></svg>
+                        WhatsApp
+                    </a>
+                    <span class="sep">·</span>
+                    <a class="social-link" href="https://github.com/DeividFerraz" target="_blank" rel="noopener" aria-label="GitHub">
+                        <svg class="icon" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.73 0 8.33c0 3.68 2.29 6.8 5.47 7.9.4.08.55-.18.55-.39 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.5-2.69-.96-.09-.24-.48-.97-.82-1.17-.28-.16-.68-.55-.01-.56.63-.01 1.08.6 1.23.85.72 1.23 1.87.88 2.33.67.07-.53.28-.88.5-1.08-1.78-.21-3.64-.92-3.64-4.08 0-.9.31-1.63.82-2.21-.08-.21-.36-1.06.08-2.21 0 0 .67-.22 2.2.84.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.06 2.2-.84 2.2-.84.44 1.15.16 2 .08 2.21.51.58.82 1.31.82 2.21 0 3.17-1.87 3.86-3.65 4.07.29.26.54.77.54 1.55 0 1.12-.01 2.02-.01 2.3 0 .21.15.46.55.38A8.21 8.21 0 0 0 16 8.33C16 3.73 12.42 0 8 0Z" /></svg>
+                        GitHub
+                    </a>
+                    <span class="sep">·</span>
+                    <a class="social-link" href="https://www.linkedin.com/in/deivid-ferraz-0ba9a022a/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.58c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.44-2.13 2.93v5.68H9.38V9h3.4v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.42a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" /></svg>
+                        LinkedIn
+                    </a>
+                </p>
+
+                <p class="foot-email">
+                    Email: <a href="mailto:deividferraz20@gmail.com">deividferraz20@gmail.com</a>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="copy wrap">
+            <span>© <span id="year"></span> · Deivid Ferraz</span>
+        </div>
+    </footer>
+
+    <!-- JS do portfólio -->
+    <script src="/js/portfolio.js"></script>
+    @RenderSection("Scripts", required: false)
+    <script>
+        // garante o ano no rodapé mesmo se a página interna não carregar o JS
+        (function(){ var y = document.getElementById('year'); if(y){ y.textContent = new Date().getFullYear(); }})();
+    </script>
+</body>
+</html>

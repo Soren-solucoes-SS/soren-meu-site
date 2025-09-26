@@ -1,7 +1,296 @@
 ﻿@{
-    ViewData["Title"] = "Página Inicial";
+    ViewData["Title"] = "Meu Portfólio";
+    ViewData["Brand"] = "Deivid Ferraz"; // aparece no header/rodapé pelo _Layout
 }
 
-<div style="text-align:center; margin-top:50px;">
-    <h1>@ViewBag.Mensagem</h1>
-</div>
+<main>
+    <!-- HERO -->
+    <section class="hero" aria-label="apresentação">
+        <div class="hero-inner">
+            <div>
+              <!-- badge compacto -->
+              <div class="now-badge">
+                <span class="now-icon" aria-hidden="true">
+                  <!-- ícone maleta -->
+                  <svg viewBox="0 0 24 24"><path fill="currentColor" d="M10 4h4a2 2 0 0 1 2 2v1h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3V6a2 2 0 0 1 2-2m0 3h4V6h-4v1Z"/></svg>
+                </span>
+                Atualmente: Desenvolvedor Back-end - <a href="https://robbu.global/home/" target="_blank" rel="noopener">@@Robbu</a>
+              </div>
+
+              <h1>
+                <span id="typewriter">Olá, sou um desenvolvedor back-end focado em criar APIs estáveis, escaláveis e fáceis de operar.</span>
+              </h1>
+              <p>Trabalho com APIs REST, DevOps e Azure. Aqui você encontra meus projetos, links para artigos e certificações.</p>
+
+              <div class="cta">
+                <a class="btn" href="#work">Ver trabalhos</a>
+                <a class="btn secondary" href="#contato">Entrar em contato</a>
+              </div>
+            </div>
+
+            <div class="pic" aria-hidden="true">
+                <img src="~/images/perfil.jpeg" alt="Setup de mesa com teclado e monitor" />
+            </div>
+          </div>
+
+        <!-- curva azul clara -->
+        <svg class="svg-curve" viewBox="0 0 1440 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="curveGrad" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#dbeafe" />
+                    <stop offset="100%" stop-color="#bfdbfe" />
+                </linearGradient>
+            </defs>
+            <path d="M-100 140C-100 140 218.416 40 693.5 40C1168.58 40 1487 140 1487 140V0H-100V140Z"></path>
+        </svg>
+    </section>
+    <!-- STACK & SKILLS -->
+    <section id="stack" aria-label="stack e habilidades">
+        <h2>Stack & Skills</h2>
+        <p class="lead">Principais tecnologias que uso no dia a dia.</p>
+
+        <div class="badges">
+            <span class="badge">.NET 8 / C#</span>
+            <span class="badge">ASP.NET Core</span>
+            <span class="badge">Entity Framework</span>
+            <span class="badge">SQL Server</span>
+            <span class="badge">PostgreSQL</span>
+            <span class="badge">REST</span>
+            <span class="badge">Docker</span>
+            <span class="badge">Kubernetes</span>
+            <span class="badge">Azure</span>
+            <span class="badge">CI/CD</span>
+            <span class="badge">TDD</span>
+            <span class="badge">Azure DevOps (Pipelines)</span>
+            <span class="badge">App Service</span>
+            <span class="badge">AKS</span>
+            <span class="badge">Application Insights</span>
+            <span class="badge">Key Vault</span>
+            <span class="badge">VNet / App Gateway</span>
+        </div>
+
+        <div class="kpis">
+            <div class="kpi">
+                <div class="kpi-number" data-to="99.95">0</div>
+                <div class="kpi-label">SLA de disponibilidade</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-number" data-to="1200">0</div>
+                <div class="kpi-label">RPS máximo em carga</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-number" data-to="45">0</div>
+                <div class="kpi-label">ms p50 de latência</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="apis" aria-label="serviços back-end">
+        <h2>APIs & Serviços que construo</h2>
+        <p class="lead">Projetos de back-end com foco em desempenho, segurança e manutenção a longo prazo.</p>
+        <ul>
+            <li>APIs RESTful com versionamento, paginação e cache.</li>
+            <li>Autenticação/autorização (JWT, cookies, políticas e roles).</li>
+            <li>Integrações com serviços externos (pagamentos, ERP, e-commerce).</li>
+            <li>Camadas de domínio e repositório com boas práticas (DDD onde faz sentido).</li>
+            <li>CI/CD, testes automatizados e migrações de banco de dados.</li>
+            <li>Provisionamento & Deploy: App Service, AKS, Functions, ACR, Releases com Azure DevOps Pipelines (CI/CD).</li>
+            <li>Observabilidade: Azure Monitor, Log Analytics, Application Insights (métricas, logs, alertas).</li>
+            <li>Escalabilidade & Resiliência: autoscale, slots de deploy, backups, ASR.</li>
+            <li>Segurança: Key Vault, RBAC, Managed Identity, Private Endpoints, Policies.</li>
+            <li>Rede & Balanço: VNet, Application Gateway.</li>
+        </ul>
+    </section>
+
+    <!-- MEUS TRABALHOS -->
+    <section id="work" aria-label="meus trabalhos">
+        <h2>Meus Trabalhos</h2>
+        <p class="lead">
+            Coleção de projetos que desenvolvi. <!--<strong>Dica:</strong> duplique um card para adicionar mais.-->
+        </p>
+
+        <div class="grid" id="projects-grid">
+            <!-- PROJETO 1 -->
+            <article class="project">
+                <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop');"></div>
+                <div>
+                    <h3>Plataforma de Cobrança — APIs & Data Pipeline (greenfield)</h3>
+                    <p>
+                        Projeto criado do zero: modelagem do banco de dados, desenvolvimento das APIs e publicação em nuvem.
+                        Integração segura com o banco do cliente para disponibilizar dados ao processo de cobrança.
+                    </p>
+
+                    <ul>
+                        <li><strong>Banco de dados:</strong> modelagem relacional, índices e procedures para alto volume.</li>
+                        <li><strong>APIs:</strong> REST com paginação, filtros e versionamento.</li>
+                        <li><strong>Nuvem:</strong> CI/CD, ambientes <em>staging/prod</em> e observabilidade.</li>
+                        <li><strong>Segurança:</strong> JWT, RBAC e secrets via Key Vault/variáveis de ambiente.</li>
+                    </ul>
+
+                    <div class="badges" style="margin-top:8px">
+                        <span class="badge">ASP.NET Core</span>
+                        <span class="badge">Entity Framework</span>
+                        <span class="badge">SQL Server</span>
+                        <span class="badge">Docker</span>
+                        <span class="badge">Azure DevOps</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project">
+                <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=800&auto=format&fit=crop');"></div>
+                <div>
+                    <h3>Refatoração de Sistema Legado — Modernização e Redução de Custos</h3>
+                    <p>
+                        Projeto em grande empresa para evoluir um sistema legado que utilizava tecnologias ultrapassadas.
+                        Realizei a reestruturação do código, atualizações de stack e migrações de banco, trazendo
+                        recursos modernos e eliminando dívidas técnicas críticas.
+                    </p>
+
+                    <ul>
+                        <li><strong>Legado → Moderno:</strong> atualização de framework, cleanup de camadas, remoção de acoplamentos e padronização de APIs.</li>
+                        <li><strong>Dados:</strong> revisão de schema, otimização de consultas/índices e migração segura de dados.</li>
+                        <li><strong>Entrega:</strong> pipeline de build/release, versionamento e automações para deploy previsível.</li>
+                        <li><strong>Impacto:</strong> redução de custos operacionais, menor tempo de manutenção e base pronta para novas features.</li>
+                    </ul>
+
+                    <div class="badges" style="margin-top:8px">
+                        <span class="badge">ASP.NET Core</span>
+                        <span class="badge">Azure DevOps (CI/CD)</span>
+                        <span class="badge">TDD</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ARTIGOS (links externos) -->
+    <section id="articles" aria-label="artigos">
+        <h2>Artigos</h2>
+        <p class="lead">Links para textos que publiquei em outros sites.</p>
+        <div class="articles" id="articles-list">
+            <div class="article">
+                <div>
+                    <div class="title">Volumes no Docker: Como Persistir e Compartilhar Dados</div>
+                    <div class="meta">2025 — Dev.to</div>
+                </div>
+                <a class="btn secondary" href="https://dev.to/deividferraz/volumes-no-docker-como-persistir-e-compartilhar-dados-nm" target="_blank" rel="noopener">Ler</a>
+            </div>
+            <div class="article">
+                <div>
+                    <div class="title">Redes no Docker, Bridge e Outras Possibilidades</div>
+                    <div class="meta">2025 — Dev.to</div>
+                </div>
+                <a class="btn secondary" href="https://dev.to/deividferraz/conceito-de-redes-em-docker-3dhd" target="_blank" rel="noopener">Ler</a>
+            </div>
+            <div class="article">
+                <div>
+                    <div class="title">Imagens e Containers: pensando como classe e instância</div>
+                    <div class="meta">2025 — Dev.to</div>
+                </div>
+                <a class="btn secondary" href="https://dev.to/deividferraz/imagens-e-containers-pensando-como-classe-e-instancia-2nj4" target="_blank" rel="noopener">Ler</a>
+            </div>
+            <div class="article">
+                <div>
+                    <div class="title">Docker Compose: Simplificando o Gerenciamento de Containers</div>
+                    <div class="meta">2025 — Dev.to</div>
+                </div>
+                <a class="btn secondary" href="https://dev.to/deividferraz/docker-compose-simplificando-o-gerenciamento-de-containers-18e1" target="_blank" rel="noopener">Ler</a>
+            </div>
+            <div class="article">
+                <div>
+                    <div class="title">Redes virtuais do Azure.</div>
+                    <div class="meta">2025 — Dev.to</div>
+                </div>
+                <a class="btn secondary" href="https://dev.to/deividferraz/redes-virtuais-do-azure-39o1" target="_blank" rel="noopener">Ler</a>
+            </div>
+            <div class="article">
+                <div>
+                    <div class="title">Pods no Kubernetes (com 2 containers no mesmo Pod):</div>
+                    <div class="meta">2025 — Dev.to</div>
+                </div>
+                <a class="btn secondary" href="https://dev.to/deividferraz/pods-no-kubernetes-com-2-containers-no-mesmo-pod-1p0p" target="_blank" rel="noopener">Ler</a>
+            </div>
+            <div class="article">
+                <div>
+                    <div class="title">PARTE 2 - Pods no Kubernetes (com 2 containers no mesmo Pod):</div>
+                    <div class="meta">2025 — Dev.to</div>
+                </div>
+                <a class="btn secondary" href="https://dev.to/deividferraz/pods-no-kubernetes-com-2-containers-no-mesmo-pod-55i9" target="_blank" rel="noopener">Ler</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICAÇÕES (3 espaços) -->
+    <section id="certs" aria-label="certificações">
+        <h2>Certificações</h2>
+        <p class="lead">Três certificações em destaque.</p>
+        <div class="certs">
+            <!-- Exemplo preenchido -->
+            <div class="cert">
+                <div class="cert-head">
+                    <img class="cert-img" src="/images/certaz900.jpeg"
+                         alt="Microsoft Certified: Conceitos do Azure - AZ900">
+                    <div>
+                        <h4>Microsoft Certified: Conceitos do Azure</h4>
+                        <div class="issuer">Microsoft - 2025</div>
+                    </div>
+                </div>
+
+                <ul class="meta">
+                    <li>
+                        <b>Código:</b>
+                        <span id="cred-docker">DFE971C0B85D5FEB</span>
+                    </li>
+                    <li>
+                        <b>URL:</b>
+                        <a href="https://learn.microsoft.com/api/credentials/share/pt-br/DeividFerrazdasNeves-0035/DFE971C0B85D5FEB?sharingId"
+                           target="_blank" rel="noopener">Ver credencial</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Modelos para duplicar e preencher -->
+            <div class="cert">
+                <div class="cert-head">
+                    <img class="cert-img" src="/images/certdevio.png" alt="Docker do Zero ao Avançado — desenvolvedor.io">
+                    <div>
+                        <h4>Docker do Zero ao Avançado</h4>
+                        <div class="issuer">desenvolvedor.io • Ago 2025</div>
+                    </div>
+                </div>
+                <ul class="meta">
+                    <li>
+                        <b>Código:</b>
+                        <span id="cred-docker">ca503b6c-6ba4-4b80-a9bf-4c390e68827d</span>
+                    </li>
+                    <li>
+                        <b>URL:</b>
+                        <a href="https://desenvolvedor.io/certificado/ca503b6c-6ba4-4b80-a9bf-4c390e68827d"
+                           target="_blank" rel="noopener">Ver credencial</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="cert">
+                <div class="cert-head">
+                    <img class="cert-img" src="/images/certfacul.png" alt="ADS - Estácio">
+                    <div>
+                        <h4>Anásile e desenvolvimento de sistemas</h4>
+                        <div class="issuer">Estácio • 07/2025</div>
+                    </div>
+                </div>
+                <ul class="meta">
+                    <li>
+                        <b>Código:</b>
+                        <span id="cred-docker">1270.1270.1dbcd6a76e0f</span>
+                    </li>
+                    <li>
+                        <b>URL:</b>
+                        <a href="https://consultadiploma.estacio.br/diploma/1270.1270.1dbcd6a76e0f"
+                           target="_blank" rel="noopener">Ver credencial</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>

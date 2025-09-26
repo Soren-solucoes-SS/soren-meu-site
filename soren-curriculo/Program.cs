@@ -1,20 +1,20 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-
 var builder = WebApplication.CreateBuilder(args);
 
-// Adiciona suporte a controllers com views
+// MVC (controllers + views)
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Usa arquivos estáticos (se você quiser CSS, JS etc.)
+// arquivos estáticos (wwwroot/css, wwwroot/js, imagens, etc.)
 app.UseStaticFiles();
 
-// Usa roteamento
 app.UseRouting();
 
-// Define rota padrão para MVC
+// Se tiver autenticação/autorização, deixe aqui:
+// app.UseAuthentication();
+// app.UseAuthorization();
+
+// Rota padrão -> Home/Index
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

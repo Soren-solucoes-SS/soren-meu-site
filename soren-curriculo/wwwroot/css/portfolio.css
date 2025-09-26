@@ -1,0 +1,805 @@
+﻿/* ===== Variáveis e base ===== */
+:root {
+    --bg: #f6fbff;
+    --fg: #0a1b2b;
+    --muted: #4d6b8c;
+    --brand: #60a5fa;
+    --brand-600: #3b82f6;
+    --brand-50: #eaf4ff;
+    --card: #ffffff;
+    --radius: 18px;
+    --shadow: 0 10px 30px rgba(16, 24, 40, .08);
+}
+
+* {
+    box-sizing: border-box
+}
+
+html, body {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: var(--brand-600);
+    text-decoration: none
+}
+
+    a:hover {
+        text-decoration: underline
+    }
+
+/* ===== Header ===== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: saturate(140%) blur(6px);
+    background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.35));
+    border-bottom: 1px solid rgba(99,102,241,.08);
+}
+
+.nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+}
+
+.brand {
+    display: flex;
+    gap: 12px;
+    align-items: center
+}
+
+    .brand .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--brand-600);
+        box-shadow: 0 0 0 6px var(--brand-50);
+    }
+
+    .brand b {
+        letter-spacing: .3px
+    }
+
+.nav a {
+    font-weight: 600;
+    opacity: .9
+}
+
+.nav .links {
+    display: flex;
+    gap: 18px
+}
+
+/* ===== Hero ===== */
+.hero {
+    position: relative;
+    overflow: clip;
+}
+
+.hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 30px;
+    padding: 72px 20px 30px;
+}
+
+.hero h1 {
+    font-size: clamp(28px,4vw,46px);
+    line-height: 1.15;
+    margin: 0 0 14px;
+    letter-spacing: .2px
+}
+
+.hero p {
+    color: var(--muted);
+    margin: 0
+}
+
+.hero .cta {
+    display: flex;
+    gap: 12px;
+    margin-top: 22px
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-weight: 600;
+    background: var(--brand);
+    color: #fff;
+    box-shadow: var(--shadow);
+}
+
+    .btn.secondary {
+        background: #fff;
+        color: var(--brand-600);
+        border-color: #dbeafe
+    }
+
+    .btn:hover {
+        filter: brightness(.98)
+    }
+
+.hero .pic {
+    aspect-ratio: 1/1;
+    border-radius: 24px;
+    background: linear-gradient(145deg,#fff,#eef6ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+}
+
+    .hero .pic img {
+        max-width: 90%;
+        height: auto;
+        border-radius: 12px
+    }
+
+/* ===== Curva ===== */
+.svg-curve {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 24px
+}
+
+    .svg-curve path {
+        fill: url(#curveGrad)
+    }
+
+/* ===== Seções ===== */
+section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 20px
+}
+
+    section h2 {
+        font-size: clamp(22px,3vw,32px);
+        margin: 0 0 6px
+    }
+
+    section p.lead {
+        margin: 0 0 18px;
+        color: var(--muted)
+    }
+
+/* ===== Projetos ===== */
+.grid {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(12,1fr)
+}
+
+.project {
+    grid-column: span 12;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 160px 1fr;
+    background: var(--card);
+    border: 1px solid #e7effc;
+    border-radius: var(--radius);
+    padding: 16px;
+    box-shadow: var(--shadow);
+}
+
+    .project .thumb {
+        width: 100%;
+        aspect-ratio: 1/1;
+        border-radius: 14px;
+        background: #eaf0ff center/cover no-repeat;
+    }
+
+    .project h3 {
+        margin: 2px 0 8px
+    }
+
+    .project p {
+        margin: 0;
+        color: var(--muted)
+    }
+
+    .project .actions {
+        margin-top: 12px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap
+    }
+
+@media (min-width:720px) {
+    .project {
+        grid-column: span 6
+    }
+}
+
+/* ===== Artigos ===== */
+.articles {
+    display: grid;
+    gap: 12px
+}
+
+.article {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 16px;
+    background: var(--card);
+    border: 1px solid #e7effc;
+    border-radius: var(--radius);
+}
+
+    .article .title {
+        font-weight: 600
+    }
+
+    .article .meta {
+        color: var(--muted);
+        font-size: .95rem
+    }
+
+/* ===== Certificações ===== */
+.certs {
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap: 18px
+}
+
+.cert {
+    background: var(--card);
+    border: 1px solid #e7effc;
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow);
+}
+
+    .cert h4 {
+        margin: 0 0 6px
+    }
+
+    .cert .issuer {
+        color: var(--muted)
+    }
+
+@media (min-width:680px) {
+    .certs {
+        grid-template-columns: repeat(3,1fr)
+    }
+}
+
+/* ===== Rodapé ===== */
+footer {
+    padding: 30px 20px;
+    border-top: 1px solid #e7effc;
+    background: linear-gradient(180deg,#f8fbff,#eef6ff);
+}
+
+.foot {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.social {
+    display: flex;
+    gap: 14px
+}
+
+/* === Badges / Skills === */
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 14px 0 6px
+}
+
+.badge {
+    background: #eef6ff;
+    color: #0a1b2b;
+    border: 1px solid #dbeafe;
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: .95rem;
+}
+
+/* === KPIs animadas === */
+.kpis {
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap: 16px;
+    margin-top: 14px
+}
+
+.kpi {
+    background: var(--card);
+    border: 1px solid #e7effc;
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow);
+    text-align: center
+}
+
+.kpi-number {
+    font-size: clamp(24px,3.5vw,34px);
+    font-weight: 800
+}
+
+.kpi-label {
+    color: var(--muted)
+}
+
+@media(min-width:720px) {
+    .kpis {
+        grid-template-columns: repeat(3,1fr)
+    }
+}
+
+/* === API Playground === */
+.api-grid {
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap: 18px
+}
+
+.api-card {
+    background: var(--card);
+    border: 1px solid #e7effc;
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow)
+}
+
+.code {
+    background: #0b1220;
+    color: #e6edf3;
+    padding: 14px;
+    border-radius: 12px;
+    overflow: auto;
+    border: 1px solid rgba(255,255,255,.06);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.copy-btn {
+    margin-top: 10px
+}
+
+@media(min-width:900px) {
+    .api-grid {
+        grid-template-columns: repeat(3,1fr)
+    }
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600
+}
+
+.icon {
+    width: 1.7em;
+    height: 1.7em;
+    display: inline-block;
+    vertical-align: -0.125em
+}
+
+.sep {
+    opacity: .4
+}
+
+/* === NOW BADGE (status atual) === */
+/* badge "atualmente" mais clean */
+.now-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #eef6ff;
+    border: 1px solid #dbeafe;
+    font-weight: 600;
+    color: #0a1b2b;
+    margin: 0 0 10px;
+}
+
+    .now-badge a {
+        color: var(--brand-600);
+        text-decoration: none
+    }
+
+    .now-badge .now-icon {
+        width: 18px;
+        height: 18px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--brand-600);
+    }
+
+        .now-badge .now-icon svg {
+            width: 1em;
+            height: 1em
+        }
+
+/* dá mais respiro no hero em telas pequenas */
+@media (max-width: 720px) {
+    .hero-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .pic {
+        order: -1;
+        margin-bottom: 12px;
+    }
+}
+
+.cert-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px
+}
+
+.cert-img {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 1px solid #e7effc;
+    background: #f2f6ff
+}
+
+.cert .meta {
+    margin: 10px 0 0;
+    padding-left: 18px;
+    color: var(--muted)
+}
+
+    .cert .meta li {
+        margin: 4px 0
+    }
+
+.copy-btn.small {
+    padding: 6px 10px;
+    font-size: .85rem;
+    line-height: 1
+}
+
+/* estados do botão de copiar */
+.copy-btn.copied {
+    background: var(--brand-600);
+    color: #fff;
+    border-color: var(--brand-600);
+}
+
+.copy-btn.hidden {
+    display: none;
+}
+
+/* === Watermark lateral com a foto (bem suave) === */
+:root {
+    --wm-size: 420px;
+    --wm-opacity: .085; /* era .06 */
+}
+
+body {
+    position: relative;
+}
+
+    /* cria duas marcas d’água fixas no fundo */
+    body::before,
+    body::after {
+        content: "";
+        position: fixed; /* fica preso à viewport (não rola junto) */
+        width: var(--wm-size);
+        height: var(--wm-size);
+        background: url("/images/perfil.jpeg") center/cover no-repeat;
+        opacity: var(--wm-opacity);
+        filter: grayscale(85%) contrast(95%) brightness(1.08);
+        pointer-events: none; /* não bloqueia cliques */
+        z-index: 0; /* fica atrás do conteúdo */
+    }
+
+    /* esquerda */
+    body::before {
+        left: 40px;
+        top: 140px;
+        transform: rotate(-6deg);
+    }
+
+    /* direita (espelhada) */
+    body::after {
+        right: 40px;
+        top: 220px;
+        transform: scaleX(-1) rotate(5deg);
+    }
+
+/* garante que header/main/footer fiquem acima da marca d’água */
+header, main, footer, .hero, section {
+    position: relative;
+    z-index: 1;
+}
+
+/* responsivo: reduz/oculta em telas menores */
+@media (max-width: 1200px) {
+    :root {
+        --wm-size: 340px;
+    }
+
+    body::before {
+        left: 20px;
+        top: 120px;
+    }
+
+    body::after {
+        right: 20px;
+        top: 200px;
+    }
+}
+
+@media (max-width: 900px) {
+    :root {
+        --wm-size: 280px;
+        --wm-opacity: .05;
+    }
+}
+
+@media (max-width: 720px) {
+    body::after {
+        display: none;
+    }
+    /* oculta a da direita */
+    :root {
+        --wm-size: 220px;
+    }
+
+    body::before {
+        left: -10px;
+        top: 180px;
+    }
+    /* joga mais pra borda */
+}
+/* --- Footer compacto e centralizado (override) --- */
+
+/* curva menor */
+.footer-curve {
+    display: block;
+    width: 100%;
+    height: 60px; /* antes ~90px */
+    margin: 0 0 -4px;
+}
+
+/* 2 colunas lado a lado, tudo centralizado */
+footer.site-footer .foot {
+    max-width: 960px; /* um pouco menor pra centralizar bem */
+    margin: 0 auto;
+    padding: 12px 12px; /* menos altura */
+    display: grid; /* substitui o flex antigo */
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center; /* centraliza o conteúdo de cada coluna */
+    gap: 20px;
+    text-align: center; /* títulos e textos centralizados */
+}
+
+/* remove espaçamentos verticais excessivos */
+footer.site-footer .f-col p {
+    margin: 4px 0;
+}
+
+/* copyright mais próximo e baixo */
+footer.site-footer .copy {
+    max-width: 960px;
+    margin: 6px auto 0; /* aproxima da área acima */
+    padding: 8px 0 12px; /* reduz a altura */
+    border-top: 1px solid #d9e7ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 600;
+    font-size: .95rem; /* levemente menor */
+}
+
+/* responsivo: empilha */
+@media (max-width:720px) {
+    footer.site-footer .foot {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+/* --- Footer em 1 coluna centralizada --- */
+.site-footer .foot {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 20px; /* compacto */
+    display: flex;
+    justify-content: center; /* centro */
+    align-items: center;
+}
+
+.site-footer .f-center {
+    text-align: center;
+}
+
+.site-footer .foot-title {
+    margin: 0 0 6px;
+    font-weight: 700;
+}
+
+.site-footer .social-links {
+    justify-content: center;
+    gap: 12px;
+    margin: 0 0 6px;
+}
+
+.site-footer .foot-email {
+    margin: 0; /* gruda no bloco de redes */
+    color: var(--muted);
+}
+
+/* curva menor */
+.footer-curve {
+    height: 70px;
+}
+
+/* copyright enxuto e centralizado */
+.site-footer .copy {
+    border-top: 1px solid #d9e7ff;
+    padding: 10px 0 12px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* responsivo (mantém centralizado) */
+@media (max-width: 720px) {
+    .site-footer .foot {
+        padding: 12px 12px;
+    }
+
+    .site-footer .social-links {
+        gap: 10px;
+    }
+}
+/* --- CENTRALIZA TUDO NO FOOTER --- */
+.site-footer .foot {
+    /* vira um bloco único central */
+    display: block;
+    padding: 12px 0;
+}
+
+.site-footer .f-center {
+    /* largura máxima e centro de fato */
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    /* garante alinhamento vertical dos itens */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* redes 100% centralizadas */
+.site-footer .social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 6px;
+}
+
+/* e-mail logo abaixo das redes */
+.site-footer .foot-email {
+    margin: 0;
+    color: var(--muted);
+}
+
+/* curva mais baixa (opcional) */
+.footer-curve {
+    height: 70px;
+}
+
+/* copyright realmente central */
+.site-footer .copy {
+    border-top: 1px solid #d9e7ff;
+    padding: 10px 0 12px;
+    text-align: center;
+    font-weight: 600;
+}
+/* --- curva mais baixa (opcional) --- */
+.footer-curve {
+    height: 70px;
+    margin-bottom: -2px;
+}
+
+/* --- footer centralizado em coluna --- */
+footer.site-footer .foot {
+    display: block; /* override do .foot antigo */
+    padding: 12px 0;
+}
+
+footer.site-footer .f-center {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+/* redes centralizadas */
+footer.site-footer .social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+}
+
+/* e-mail logo abaixo das redes */
+footer.site-footer .foot-email {
+    margin: 0 0 6px;
+    color: var(--muted);
+}
+
+/* copyright central */
+footer.site-footer .copy {
+    border-top: 1px solid #d9e7ff;
+    padding: 10px 0 12px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* mobile */
+@media (max-width: 720px) {
+    footer.site-footer .f-center {
+        max-width: 92%;
+    }
+}
+
+/* avatar pequenininho ao lado do nome */
+.brand .avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    object-fit: cover;
+    display: inline-block;
+    box-shadow: 0 0 0 2px #fff; /* aro branco suave */
+    border: 1px solid #dbeafe; /* contorno leve */
+}
