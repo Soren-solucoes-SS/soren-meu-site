@@ -37,62 +37,31 @@ function renderArticles() {
 }
 renderArticles();
 
-// Copiar código da credencial
-// === Copiar código da credencial (delegation + fallback) ===
 (function () {
-    async function copyText(text) {
-        // usa Clipboard API se disponível e site em HTTPS
-        if (navigator.clipboard && window.isSecureContext) {
-            await navigator.clipboard.writeText(text);
-            return;
+    const btn = document.querySelector('.nav-toggle');
+    const links = document.getElementById('main-links');
+    if (!btn || !links) return;
+
+    const closeOnNav = (e) => {
+        if (e.target.closest('a')) {
+            links.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('no-scroll');
         }
-        // fallback
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        ta.style.position = 'fixed';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.focus();
-        ta.select();
-        document.execCommand('copy');
-        ta.remove();
-    }
+    };
 
-    document.addEventListener('click', async (e) => {
-        const btn = e.target.closest('.copy-btn[data-copy]');
-        if (!btn) return;
+    btn.addEventListener('click', () => {
+        const isOpen = links.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(isOpen));
+        document.body.classList.toggle('no-scroll', isOpen);
+    });
 
-        const sel = btn.getAttribute('data-copy');
-        const el = document.querySelector(sel);
-        if (!el) return;
-
-        const text = (btn.dataset.value ?? el.textContent).trim();
-
-        const oldText = btn.textContent;
-        try {
-            await copyText(text);
-
-            // feedback visual
-            btn.classList.add('copied');
-            btn.textContent = 'Copiado!';
-
-            // comportamento opcional: esconder por 2s
-            if (btn.dataset.behavior === 'hide') {
-                btn.classList.add('hidden');
-                setTimeout(() => {
-                    btn.classList.remove('hidden', 'copied');
-                    btn.textContent = oldText;
-                }, 2000);
-            } else {
-                // voltar ao normal em 1.5s
-                setTimeout(() => {
-                    btn.classList.remove('copied');
-                    btn.textContent = oldText;
-                }, 1500);
-            }
-        } catch (err) {
-            btn.textContent = 'Erro :(';
-            setTimeout(() => (btn.textContent = oldText), 1500);
+    links.addEventListener('click', closeOnNav);
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 920) {
+            links.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('no-scroll');
         }
     });
 })();
