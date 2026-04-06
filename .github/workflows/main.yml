@@ -41,6 +41,6 @@ jobs:
           resourceGroup: ${{ secrets.AZURE_RESOURCE_GROUP }}
           containerAppName: ca-curriculum-api
           imageToDeploy: docker.io/${{ secrets.DOCKERHUB_USERNAME }}/soren-curriculo:latest
-          registryServer: docker.io
+          registryUrl: docker.io
           registryUsername: ${{ secrets.DOCKERHUB_USERNAME }}
           registryPassword: ${{ secrets.DOCKERHUB_TOKEN }}
