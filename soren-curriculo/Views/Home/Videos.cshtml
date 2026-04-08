@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Vídeos";
+    ViewData["Brand"] = "Deivid Ferraz";
+}
+
+<main>
+    <section class="videos-page" aria-label="vídeos do portfólio">
+        <div class="videos-page-head">
+            <span class="page-pill">Biblioteca em vídeo</span>
+            <h1>Vídeos</h1>
+            <p class="lead">
+                Conteúdos publicados no YouTube sobre tecnologia, back-end, cloud e Kubernetes.
+            </p>
+        </div>
+
+        <div class="videos-grid">
+            <article class="video-card">
+                <div class="video-frame">
+                    <!-- Embed do YouTube -->
+                    <iframe class="video-player"
+                            src="https://www.youtube.com/embed/eBuMgnYguTg"
+                            title="Destrinxando Kubernetes"
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="video-content">
+                    <span class="video-badge">Vídeo em destaque</span>
+                    <h2>Destrinxando Kubernetes</h2>
+                    <p>
+                        Vídeo publicado no YouTube e incorporado diretamente na página de vídeos do portfólio.
+                    </p>
+
+                    <div class="video-meta">
+                        <div>
+                            <strong>Link:</strong>
+                            <a href="https://youtu.be/eBuMgnYguTg" target="_blank" rel="noopener">
+                                Assistir no YouTube
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-actions">
+                        <a class="btn" href="https://youtu.be/eBuMgnYguTg" target="_blank" rel="noopener">
+                            Abrir no YouTube
+                        </a>
+                        <a class="btn secondary" href="/">
+                            Voltar para a Home
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+</main>
