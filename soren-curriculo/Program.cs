@@ -5,7 +5,7 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// arquivos estáticos (wwwroot/css, wwwroot/js, imagens, etc.)..
+// arquivos estáticos (wwwroot/css, wwwroot/js, imagens, etc.)
 app.UseStaticFiles();
 
 app.UseRouting();
