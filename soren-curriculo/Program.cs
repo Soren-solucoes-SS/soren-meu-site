@@ -5,16 +5,16 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// arquivos estáticos (wwwroot/css, wwwroot/js, imagens, etc.)
+// arquivos estÃ¡ticos (wwwroot/css, wwwroot/js, imagens, etc.)
 app.UseStaticFiles();
 
 app.UseRouting();
 
-// Se tiver autenticação/autorização, deixe aqui:
+// Se tiver autenticaÃ§Ã£o/autorizaÃ§Ã£o, deixe aqui:
 // app.UseAuthentication();
 // app.UseAuthorization();
 
-// Rota padrão -> Home/Index
+// Rota padrÃ£o -> Home/Index
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
