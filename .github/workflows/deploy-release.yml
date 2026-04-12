@@ -3,7 +3,8 @@ name: Deploy aplicattion
 on:
   workflow_run: 
       workflows: ["Build and Push to Docker Hub"]
-      types: completed
+      types: 
+        - completed
 
 jobs:
   deployment-cloud-azure:
