@@ -1,16 +1,13 @@
 name: Deploy aplicattion
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch: 
+  workflow_run: 
+      workflows: ["Build and Push to Docker Hub"]
+      types: completed
 
 jobs:
-  build:
+  deployment-cloud-azure:
+    name: deployment azure cloud
     runs-on: ubuntu-latest
 
     permissions:
