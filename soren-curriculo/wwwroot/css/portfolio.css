@@ -732,6 +732,31 @@ body {
 
 /* ===== Mobile menu ===== */
 @media (max-width: 720px) {
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 200;
+    }
+
+    .nav {
+        max-width: 100%;
+        padding: 10px 16px;
+    }
+
+    main {
+        padding-top: 72px;
+    }
+
+    .nav .links {
+        position: fixed;
+        top: 72px;
+        left: 16px;
+        right: 16px;
+        z-index: 210;
+    }
     .nav {
         position: relative;
         z-index: 100;
