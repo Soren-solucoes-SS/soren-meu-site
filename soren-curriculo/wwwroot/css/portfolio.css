@@ -602,6 +602,11 @@ footer {
     font-weight: 600;
     color: var(--muted);
 }
+/* trava qualquer vazamento lateral no mobile */
+html,
+body {
+    overflow-x: hidden;
+}
 
 /* ===== Mobile ===== */
 @media (max-width: 720px) {
@@ -671,6 +676,8 @@ footer {
 
     .nav {
         padding: 10px 16px;
+        position: relative;
+        z-index: 60;
     }
 
         .nav .links {
@@ -698,64 +705,83 @@ footer {
 /* ===== Botão hambúrguer ===== */
 .nav-toggle {
     display: none;
-    width: 40px;
-    height: 40px;
-    border: 0;
-    background: transparent;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(59, 130, 246, 0.28);
+    background: rgba(11, 18, 32, 0.92);
+    border-radius: 10px;
     padding: 0;
     margin-left: 8px;
     cursor: pointer;
-    color: var(--brand-600);
+    position: relative;
+    z-index: 120;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
 }
 
     .nav-toggle span {
         display: block;
-        width: 22px;
+        width: 18px;
         height: 2px;
-        background: currentColor;
-        border-radius: 2px;
-        margin: 4px auto;
+        background: #60A5FA;
+        border-radius: 999px;
+        margin: 0;
     }
 
-/* ===== Mobile: menu off-canvas ===== */
+/* ===== Mobile menu ===== */
 @media (max-width: 720px) {
     .nav {
-        padding: 10px 16px;
+        position: relative;
+        z-index: 100;
+        overflow: visible;
     }
 
     .nav-toggle {
         display: inline-flex;
-        align-items: center;
-        justify-content: center;
     }
 
     .nav .links {
+        display: none;
         position: fixed;
-        top: 56px;
-        right: 0;
-        width: min(80vw, 320px);
-        height: calc(100dvh - 56px);
-        background: rgba(7, 12, 20, 0.96);
-        border-left: 1px solid var(--border);
-        box-shadow: -12px 0 24px rgba(0, 0, 0, 0.30);
-        padding: 16px;
-        display: flex;
+        top: 72px;
+        left: 16px;
+        right: 16px;
         flex-direction: column;
-        gap: 12px;
-        transform: translateX(100%);
-        transition: transform .25s ease;
-        z-index: 40;
-        backdrop-filter: blur(12px);
+        gap: 8px;
+        padding: 14px;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        background: rgba(7, 12, 20, 0.98);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+        z-index: 110;
     }
 
         .nav .links.open {
-            transform: translateX(0);
+            display: flex !important;
         }
+
+        .nav .links a {
+            display: block;
+            width: 100%;
+            padding: 12px 10px;
+            border-radius: 10px;
+        }
+
+    .nav.menu-open::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 109;
+    }
 
     body.no-scroll {
         overflow: hidden;
     }
 }
+
 /* ===== Página de vídeos ===== */
 .videos-page {
     padding-top: 56px;
