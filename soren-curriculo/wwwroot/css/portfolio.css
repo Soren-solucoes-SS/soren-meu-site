@@ -960,3 +960,556 @@ body {
         min-height: auto;
     }
 }
+/* =========================================================================
+   MODERNIZACAO 2026 - header com scrollspy, palestras, carrossel e carreira
+   ========================================================================= */
+
+/* ===== Barra de progresso de leitura ===== */
+.read-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    z-index: 40;
+    pointer-events: none;
+}
+
+    .read-progress span {
+        display: block;
+        height: 100%;
+        width: 0;
+        background: linear-gradient(90deg, var(--brand-600), var(--accent));
+        transition: width .12s linear;
+    }
+
+/* ===== Header: estado compacto ao rolar ===== */
+header {
+    transition: background .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+    header.is-scrolled {
+        background: rgba(5, 7, 11, 0.88);
+        border-bottom-color: rgba(56, 189, 248, 0.22);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+        header.is-scrolled .nav {
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+
+.nav {
+    transition: padding .25s ease;
+}
+
+/* ===== Nav: link ativo (scrollspy) ===== */
+.nav .links a {
+    position: relative;
+    padding: 6px 2px;
+    opacity: .78;
+    transition: opacity .2s ease, color .2s ease;
+}
+
+    .nav .links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--brand-600), var(--accent));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform .24s ease;
+    }
+
+    .nav .links a:hover {
+        opacity: 1;
+        text-decoration: none;
+    }
+
+        .nav .links a:hover::after,
+        .nav .links a.is-active::after {
+            transform: scaleX(1);
+        }
+
+    .nav .links a.is-active {
+        opacity: 1;
+        color: #BAE6FD;
+    }
+
+/* ===== Hero: linha de badges ===== */
+.badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 12px;
+}
+
+    .badge-row .now-badge {
+        margin: 0;
+    }
+
+.now-badge.is-talk {
+    background: rgba(56, 189, 248, 0.12);
+    border-color: rgba(56, 189, 248, 0.34);
+}
+
+/* ===== Secao Palestras ===== */
+.talk {
+    display: grid;
+    gap: 22px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+    padding: 22px;
+}
+
+.talk-head h3 {
+    margin: 0 0 4px;
+    font-size: clamp(18px, 2.4vw, 24px);
+    line-height: 1.3;
+}
+
+.talk-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    color: var(--muted);
+    font-size: .95rem;
+    margin: 0 0 14px;
+}
+
+    .talk-meta span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+.talk-body p {
+    margin: 0 0 12px;
+}
+
+.talk-body ul {
+    margin: 0 0 12px;
+    padding-left: 20px;
+}
+
+    .talk-body ul li {
+        margin-bottom: 6px;
+    }
+
+/* ===== Carrossel ===== */
+.carousel {
+    position: relative;
+}
+
+.carousel-track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 86%;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(56, 189, 248, .35) transparent;
+}
+
+    .carousel-track::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .carousel-track::-webkit-scrollbar-thumb {
+        background: rgba(56, 189, 248, .35);
+        border-radius: 999px;
+    }
+
+.carousel-item {
+    scroll-snap-align: center;
+    margin: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--card-strong);
+}
+
+    .carousel-item img {
+        display: block;
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        background: #05070B;
+    }
+
+    .carousel-item figcaption {
+        padding: 10px 14px;
+        color: var(--muted);
+        font-size: .9rem;
+        line-height: 1.5;
+    }
+
+.carousel-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.carousel-btn {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 auto;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--fg);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    transition: background .2s ease, border-color .2s ease, transform .15s ease;
+}
+
+    .carousel-btn:hover {
+        background: rgba(56, 189, 248, 0.16);
+        border-color: rgba(56, 189, 248, 0.42);
+    }
+
+    .carousel-btn:active {
+        transform: scale(.94);
+    }
+
+    .carousel-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+
+.carousel-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+}
+
+    .carousel-dots button {
+        width: 8px;
+        height: 8px;
+        padding: 0;
+        border-radius: 999px;
+        border: 0;
+        cursor: pointer;
+        background: rgba(159, 176, 199, 0.35);
+        transition: background .2s ease, width .2s ease;
+    }
+
+        .carousel-dots button.is-active {
+            width: 22px;
+            background: var(--accent);
+        }
+
+@media (min-width: 720px) {
+    .carousel-track {
+        grid-auto-columns: 46%;
+    }
+
+    .carousel-item img {
+        height: 300px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .carousel-track {
+        grid-auto-columns: 32%;
+    }
+}
+
+/* ===== Timeline de carreira ===== */
+.timeline {
+    position: relative;
+    margin: 0;
+    padding: 0 0 0 26px;
+    list-style: none;
+}
+
+    .timeline::before {
+        content: "";
+        position: absolute;
+        left: 7px;
+        top: 6px;
+        bottom: 6px;
+        width: 2px;
+        background: linear-gradient(180deg, var(--brand-600), rgba(56, 189, 248, 0.08));
+    }
+
+.timeline-item {
+    position: relative;
+    padding: 0 0 22px;
+}
+
+    .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -26px;
+        top: 6px;
+        width: 10px;
+        height: 10px;
+        margin-left: 3px;
+        border-radius: 50%;
+        background: var(--bg);
+        border: 2px solid var(--brand-600);
+    }
+
+    .timeline-item.is-current::before {
+        background: var(--accent);
+        border-color: var(--accent);
+        box-shadow: 0 0 0 5px rgba(56, 189, 248, 0.16);
+    }
+
+.timeline-role {
+    font-weight: 700;
+    margin: 0;
+}
+
+.timeline-org {
+    color: #7DD3FC;
+    font-weight: 600;
+    font-size: .95rem;
+}
+
+.timeline-period {
+    color: var(--muted);
+    font-size: .88rem;
+    margin: 2px 0 8px;
+}
+
+.timeline-item p {
+    margin: 0;
+    color: var(--muted);
+}
+
+/* ===== Card de projeto em destaque ===== */
+.project.is-featured {
+    border-color: rgba(56, 189, 248, 0.34);
+    box-shadow: 0 18px 46px rgba(37, 99, 235, 0.18);
+}
+
+.project-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .3px;
+    text-transform: uppercase;
+    background: rgba(34, 197, 94, 0.14);
+    border: 1px solid rgba(34, 197, 94, 0.32);
+    color: #86EFAC;
+    margin-bottom: 8px;
+}
+
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: .95rem;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    color: var(--fg);
+    transition: background .2s ease, border-color .2s ease;
+}
+
+    .project-link:hover {
+        background: rgba(56, 189, 248, 0.22);
+        border-color: rgba(56, 189, 248, 0.5);
+        text-decoration: none;
+    }
+
+    .project-link svg {
+        width: 15px;
+        height: 15px;
+    }
+
+/* ===== Respeita quem prefere menos movimento ===== */
+@media (prefers-reduced-motion: reduce) {
+    .carousel-track {
+        scroll-behavior: auto;
+    }
+
+    .read-progress span,
+    .nav .links a::after,
+    header,
+    .nav {
+        transition: none;
+    }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 720px) {
+    .carousel-item img {
+        height: 220px;
+    }
+
+    .talk {
+        padding: 16px;
+    }
+
+    .nav .links a::after {
+        display: none;
+    }
+}
+
+/* Icone colado no proprio texto da meta da palestra */
+.talk-meta span i {
+    font-style: normal;
+    line-height: 1;
+}
+
+/* =========================================================================
+   Cards de projeto compactos, com "Ler mais" em acordeao
+   ========================================================================= */
+
+/* Thumb menor: o card deixa de ser dominado pela imagem */
+.project {
+    grid-template-columns: 104px 1fr;
+    align-content: start;
+}
+
+    .project .thumb {
+        aspect-ratio: 1 / 1;
+    }
+
+    /* Thumb da logo: contain e centralizada, sem cortar o monograma */
+    .project .thumb.is-logo {
+        background: radial-gradient(circle at 50% 42%, rgba(56, 189, 248, 0.16), rgba(5, 7, 11, 0) 68%), #0B111A;
+        background-image: url("/images/sorenbook-logo.webp"), radial-gradient(circle at 50% 42%, rgba(56, 189, 248, 0.16), rgba(5, 7, 11, 0) 68%);
+        background-repeat: no-repeat, no-repeat;
+        background-position: center, center;
+        background-size: 58% auto, cover;
+        background-color: #0B111A;
+        border-color: rgba(56, 189, 248, 0.22);
+    }
+
+.project-content {
+    min-width: 0;
+}
+
+/* Resumo curto limitado a 3 linhas enquanto o card esta fechado */
+.project-summary {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.project.is-open .project-summary {
+    display: block;
+    overflow: visible;
+}
+
+/* Conteudo expandido */
+.project-more[hidden] {
+    display: none;
+}
+
+.project-more {
+    margin-top: 12px;
+}
+
+    .project-more ul {
+        margin: 0 0 4px;
+        padding-left: 20px;
+        color: var(--muted);
+    }
+
+        .project-more ul li {
+            margin-bottom: 6px;
+        }
+
+    .project-more .badges {
+        margin-top: 12px;
+    }
+
+/* Botao Ler mais / Ler menos */
+.project-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    padding: 7px 12px 7px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    font: inherit;
+    font-size: .92rem;
+    font-weight: 600;
+    color: #7DD3FC;
+    background: rgba(56, 189, 248, 0.10);
+    border: 1px solid rgba(56, 189, 248, 0.24);
+    transition: background .2s ease, border-color .2s ease;
+}
+
+    .project-toggle:hover {
+        background: rgba(56, 189, 248, 0.20);
+        border-color: rgba(56, 189, 248, 0.44);
+    }
+
+    .project-toggle:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+    }
+
+    .project-toggle svg {
+        width: 16px;
+        height: 16px;
+        transition: transform .24s ease;
+    }
+
+    .project-toggle[aria-expanded="true"] svg {
+        transform: rotate(180deg);
+    }
+
+/* O card aberto ganha um leve destaque */
+.project.is-open {
+    border-color: rgba(56, 189, 248, 0.30);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-toggle svg {
+        transition: none;
+    }
+}
+
+/* Mobile: thumb em faixa no topo, conteudo abaixo */
+@media (max-width: 560px) {
+    .project {
+        grid-template-columns: 1fr;
+    }
+
+        .project .thumb {
+            aspect-ratio: 16 / 7;
+        }
+
+        .project .thumb.is-logo {
+            background-size: 22% auto, cover;
+        }
+    }

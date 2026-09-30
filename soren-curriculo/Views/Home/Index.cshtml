@@ -6,18 +6,31 @@
 <main id="home" aria-label="home">
     <!-- HERO -->
     <section class="hero" aria-label="apresentação">
-        <div class="now-badge">
-            <span class="now-icon" aria-hidden="true">
-                <!-- ícone maleta -->
-                <svg viewBox="0 0 24 24"><path fill="currentColor" d="M10 4h4a2 2 0 0 1 2 2v1h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3V6a2 2 0 0 1 2-2m0 3h4V6h-4v1Z" /></svg>
-            </span>
-            Atualmente: Desenvolvedor Back-end - <a href="https://robbu.global/home/" target="_blank" rel="noopener">@@Robbu</a>
+        <div class="badge-row">
+            <div class="now-badge">
+                <span class="now-icon" aria-hidden="true">
+                    <!-- ícone maleta -->
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M10 4h4a2 2 0 0 1 2 2v1h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3V6a2 2 0 0 1 2-2m0 3h4V6h-4v1Z" /></svg>
+                </span>
+                Atualmente: Desenvolvedor .NET - <a href="https://robbu.global/home/" target="_blank" rel="noopener">@@Robbu</a>
+            </div>
+            <a class="now-badge is-talk" href="#palestras">
+                <span class="now-icon" aria-hidden="true">
+                    <!-- ícone microfone -->
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3m5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2Z" /></svg>
+                </span>
+                Palestrante - MVP Conf 2026
+            </a>
         </div>
 
         <h1>
             <span id="typewriter">Desenvolvedor back-end com foco em .NET e soluções em nuvem.</span>
         </h1>
-        <p>Trabalho com APIs REST, DevOps e Azure. Aqui você encontra meus projetos, links para artigos e certificações.</p>
+        <p>
+            Desenvolvedor .NET na <a href="https://robbu.global/home/" target="_blank" rel="noopener">Robbu</a>, construindo e mantendo
+            APIs para grandes empresas. Atuo também na nuvem do Azure, com deploys e pipelines de CI/CD, e venho focando cada vez
+            mais em Kubernetes. Aqui você encontra meus projetos, palestras, artigos e certificações.
+        </p>
 
         <!-- curva azul clara -->
         <svg class="svg-curve" viewBox="0 0 1440 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -58,16 +71,16 @@
 
         <div class="kpis">
             <div class="kpi">
-                <div class="kpi-number" data-to="99.95">0</div>
-                <div class="kpi-label">SLA de disponibilidade</div>
+                <div class="kpi-number">3+</div>
+                <div class="kpi-label">anos desenvolvendo na Robbu</div>
             </div>
             <div class="kpi">
-                <div class="kpi-number" data-to="1200">0</div>
-                <div class="kpi-label">RPS máximo em carga</div>
+                <div class="kpi-number">14</div>
+                <div class="kpi-label">artigos técnicos publicados</div>
             </div>
             <div class="kpi">
-                <div class="kpi-number" data-to="45">0</div>
-                <div class="kpi-label">ms p50 de latência</div>
+                <div class="kpi-number">10</div>
+                <div class="kpi-label">certificações concluídas</div>
             </div>
         </div>
     </section>
@@ -97,59 +110,242 @@
         </p>
 
         <div class="grid" id="projects-grid">
-            <!-- PROJETO 1 -->
-            <article class="project">
-                <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop');"></div>
-                <div>
-                    <h3>Plataforma de Cobrança — APIs & Data Pipeline (greenfield)</h3>
-                    <p>
-                        Projeto criado do zero: modelagem do banco de dados, desenvolvimento das APIs e publicação em nuvem.
-                        Integração segura com o banco do cliente para disponibilizar dados ao processo de cobrança.
+            <!-- PROJETO EM DESTAQUE — SorenBook -->
+            <article class="project is-featured" data-project>
+                <div class="thumb is-logo" role="img" aria-label="Logo do SorenBook"></div>
+                <div class="project-content">
+                    <span class="project-tag">Produto próprio · em produção</span>
+                    <h3>SorenBook — plataforma SaaS de agendamento e gestão</h3>
+                    <p class="project-summary">
+                        Plataforma SaaS multiempresa para negócios que trabalham com agendamentos, como barbearias e salões.
+                        Reúne agenda, equipe, financeiro e o portal do cliente num só produto.
                     </p>
 
-                    <ul>
-                        <li><strong>Banco de dados:</strong> modelagem relacional, índices e procedures para alto volume.</li>
-                        <li><strong>APIs:</strong> REST com paginação, filtros e versionamento.</li>
-                        <li><strong>Nuvem:</strong> CI/CD, ambientes <em>staging/prod</em> e observabilidade.</li>
-                        <li><strong>Segurança:</strong> JWT, RBAC e secrets via Key Vault/variáveis de ambiente.</li>
-                    </ul>
+                    <div class="project-more" id="more-sorenbook" hidden>
+                        <ul>
+                            <li><strong>Operação:</strong> serviços, colaboradores, disponibilidade e agendamentos.</li>
+                            <li><strong>Portal do cliente:</strong> descoberta de empresas, marcação de horários e acompanhamento da conta.</li>
+                            <li><strong>Fila inteligente:</strong> oferece o horário a uma pessoa por vez e passa para a próxima após 15 minutos sem confirmação.</li>
+                            <li><strong>Financeiro:</strong> despesas, comissões e relatórios.</li>
+                            <li><strong>Arquitetura:</strong> .NET 9 em camadas (Domain, Application, Infrastructure, API e Web) com EF Core e SQL Server.</li>
+                            <li><strong>Multiempresa:</strong> isolamento por tenant e permissões por perfil (Owner, Adm Master e Staff).</li>
+                            <li><strong>Integrações:</strong> Mercado Pago (planos e recebimento), WhatsApp via Evolution API, Supabase Auth, Cloudflare R2 e Nominatim/OpenStreetMap.</li>
+                        </ul>
 
-                    <div class="badges" style="margin-top:8px">
-                        <span class="badge">ASP.NET Core</span>
-                        <span class="badge">Entity Framework</span>
-                        <span class="badge">SQL Server</span>
-                        <span class="badge">Docker</span>
-                        <span class="badge">Azure DevOps</span>
-                        <span class="badge">Kubernetes</span>
+                        <div class="badges">
+                            <span class="badge">.NET 9</span>
+                            <span class="badge">ASP.NET Core</span>
+                            <span class="badge">Entity Framework Core</span>
+                            <span class="badge">SQL Server</span>
+                            <span class="badge">Mercado Pago</span>
+                            <span class="badge">Cloudflare R2</span>
+                            <span class="badge">Multi-tenant</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a class="project-link" href="https://sorenbook.com.br" target="_blank" rel="noopener">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7ZM5 5h5V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5h-2v5H5V5Z" /></svg>
+                                Acessar sorenbook.com.br
+                            </a>
+                        </div>
                     </div>
+
+                    <button class="project-toggle" type="button" aria-expanded="false" aria-controls="more-sorenbook">
+                        <span class="project-toggle-label">Ler mais</span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 15.41 6.59 10 8 8.59l4 4 4-4L17.41 10 12 15.41Z" /></svg>
+                    </button>
                 </div>
             </article>
 
-            <article class="project">
-                <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=800&auto=format&fit=crop');"></div>
-                <div>
-                    <h3>Refatoração de Sistema Legado — Modernização e Redução de Custos</h3>
-                    <p>
-                        Projeto em grande empresa para evoluir um sistema legado que utilizava tecnologias ultrapassadas.
-                        Realizei a reestruturação do código, atualizações de stack e migrações de banco, trazendo
-                        recursos modernos e eliminando dívidas técnicas críticas.
+            <!-- PROJETO 1 -->
+            <article class="project" data-project>
+                <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop');"></div>
+                <div class="project-content">
+                    <h3>Plataforma de Cobrança — APIs &amp; Data Pipeline (greenfield)</h3>
+                    <p class="project-summary">
+                        Projeto criado do zero: modelagem do banco de dados, desenvolvimento das APIs e publicação em nuvem,
+                        com integração segura ao banco do cliente.
                     </p>
 
-                    <ul>
-                        <li><strong>Legado → Moderno:</strong> atualização de framework, cleanup de camadas, remoção de acoplamentos e padronização de APIs.</li>
-                        <li><strong>Dados:</strong> revisão de schema, otimização de consultas/índices e migração segura de dados.</li>
-                        <li><strong>Entrega:</strong> pipeline de build/release, versionamento e automações para deploy previsível.</li>
-                        <li><strong>Impacto:</strong> redução de custos operacionais, menor tempo de manutenção e base pronta para novas features.</li>
-                    </ul>
+                    <div class="project-more" id="more-cobranca" hidden>
+                        <ul>
+                            <li><strong>Banco de dados:</strong> modelagem relacional, índices e procedures para alto volume.</li>
+                            <li><strong>APIs:</strong> REST com paginação, filtros e versionamento.</li>
+                            <li><strong>Nuvem:</strong> CI/CD, ambientes <em>staging/prod</em> e observabilidade.</li>
+                            <li><strong>Segurança:</strong> JWT, RBAC e secrets via Key Vault/variáveis de ambiente.</li>
+                        </ul>
 
-                    <div class="badges" style="margin-top:8px">
-                        <span class="badge">ASP.NET Core</span>
-                        <span class="badge">Azure DevOps (CI/CD)</span>
-                        <span class="badge">TDD</span>
+                        <div class="badges">
+                            <span class="badge">ASP.NET Core</span>
+                            <span class="badge">Entity Framework</span>
+                            <span class="badge">SQL Server</span>
+                            <span class="badge">Docker</span>
+                            <span class="badge">Azure DevOps</span>
+                            <span class="badge">Kubernetes</span>
+                        </div>
                     </div>
+
+                    <button class="project-toggle" type="button" aria-expanded="false" aria-controls="more-cobranca">
+                        <span class="project-toggle-label">Ler mais</span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 15.41 6.59 10 8 8.59l4 4 4-4L17.41 10 12 15.41Z" /></svg>
+                    </button>
+                </div>
+            </article>
+
+            <!-- PROJETO 2 -->
+            <article class="project" data-project>
+                <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=800&auto=format&fit=crop');"></div>
+                <div class="project-content">
+                    <h3>Refatoração de Sistema Legado — Modernização e Redução de Custos</h3>
+                    <p class="project-summary">
+                        Projeto em grande empresa para evoluir um sistema legado com tecnologias ultrapassadas: reestruturação
+                        do código, atualizações de stack e migrações de banco.
+                    </p>
+
+                    <div class="project-more" id="more-legado" hidden>
+                        <ul>
+                            <li><strong>Legado → Moderno:</strong> atualização de framework, cleanup de camadas, remoção de acoplamentos e padronização de APIs.</li>
+                            <li><strong>Dados:</strong> revisão de schema, otimização de consultas/índices e migração segura de dados.</li>
+                            <li><strong>Entrega:</strong> pipeline de build/release, versionamento e automações para deploy previsível.</li>
+                            <li><strong>Impacto:</strong> redução de custos operacionais, menor tempo de manutenção e base pronta para novas features.</li>
+                        </ul>
+
+                        <div class="badges">
+                            <span class="badge">ASP.NET Core</span>
+                            <span class="badge">Azure DevOps (CI/CD)</span>
+                            <span class="badge">TDD</span>
+                        </div>
+                    </div>
+
+                    <button class="project-toggle" type="button" aria-expanded="false" aria-controls="more-legado">
+                        <span class="project-toggle-label">Ler mais</span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 15.41 6.59 10 8 8.59l4 4 4-4L17.41 10 12 15.41Z" /></svg>
+                    </button>
                 </div>
             </article>
         </div>
+    </section>
+
+    <!-- PALESTRAS & COMUNIDADE -->
+    <section id="palestras" aria-label="palestras e comunidade">
+        <h2>Palestras &amp; Comunidade</h2>
+        <p class="lead">O que eu compartilho fora do trabalho.</p>
+
+        <div class="talk">
+            <div class="talk-head">
+                <h3>Kubernetes + KEDA: Troubleshooting de autoscaling em workers de fila</h3>
+                <p class="talk-meta">
+                    <span><i aria-hidden="true">🎤</i>MVP Conf 2026 · Palestrante</span>
+                    <span><i aria-hidden="true">📅</i>26 de setembro de 2026 · São Paulo</span>
+                    <span><i aria-hidden="true">☁️</i>Trilha Cloud &amp; Developers · Nível intermediário</span>
+                </p>
+            </div>
+
+            <div class="talk-body">
+                <p>
+                    Sabe quando a fila está cheia, os pods sobem, o cluster está todo verde e mesmo assim nada é processado?
+                    Foi disso que eu falei. A sessão mostrou, com demo ao vivo, quatro configurações que quebram o autoscaling
+                    sem lançar erro nenhum — e um método de cinco passos para achar a causa de qualquer uma delas.
+                </p>
+
+                <ul>
+                    <li>Subir réplica não significa aumentar vazão: o gargalo costuma estar no downstream.</li>
+                    <li>A confusão clássica entre <code>threshold</code> e <code>activationThreshold</code>.</li>
+                    <li>Scale to zero que simplesmente não dispara.</li>
+                    <li>O risco de escalar pods até derrubar o banco de dados.</li>
+                </ul>
+
+                <p>
+                    A demo rodou inteira num notebook, com KEDA e RabbitMQ sobre minikube, e o raciocínio vale igual para
+                    quem usa Azure Service Bus ou SQS. Foi a minha primeira palestra presencial, a convite dos coordenadores
+                    da trilha Cloud &amp; Developers.
+                </p>
+
+                <div class="badges">
+                    <span class="badge">Kubernetes</span>
+                    <span class="badge">KEDA</span>
+                    <span class="badge">RabbitMQ</span>
+                    <span class="badge">Autoscaling</span>
+                    <span class="badge">Troubleshooting</span>
+                    <span class="badge">.NET</span>
+                </div>
+            </div>
+
+            <div class="carousel" data-carousel>
+                <div class="carousel-track" tabindex="0" role="group" aria-label="Fotos do MVP Conf 2026">
+                    <figure class="carousel-item">
+                        <img src="/images/mvpconf/deivid-apresentando.webp" alt="Deivid apresentando a palestra, com a demo projetada na tela" loading="lazy" decoding="async" width="1400" height="933">
+                        <figcaption>Durante a sessão, com a demo rodando ao vivo.</figcaption>
+                    </figure>
+                    <figure class="carousel-item">
+                        <img src="/images/mvpconf/demo-keda-rabbitmq.webp" alt="Tela da demo: painel do RabbitMQ com fila acumulada e k9s mostrando pods worker em erro" loading="lazy" decoding="async" width="1400" height="933">
+                        <figcaption>A demo: fila acumulando no RabbitMQ enquanto os workers falham no k9s — o cenário central da palestra.</figcaption>
+                    </figure>
+                    <figure class="carousel-item">
+                        <img src="/images/mvpconf/cracha-palestrante.webp" alt="Crachá de palestrante do MVP Conf com o nome Deivid Ferraz das Neves" loading="lazy" decoding="async" width="900" height="1600">
+                        <figcaption>O crachá de palestrante, antes da abertura.</figcaption>
+                    </figure>
+                    <figure class="carousel-item">
+                        <img src="/images/mvpconf/auditorio-lotado.webp" alt="Auditório da UNIP lotado durante a abertura do MVP Conf 2026" loading="lazy" decoding="async" width="1200" height="1600">
+                        <figcaption>Auditório lotado na abertura do evento.</figcaption>
+                    </figure>
+                    <figure class="carousel-item">
+                        <img src="/images/mvpconf/palco-plateia.webp" alt="Palco do MVP Conf visto da plateia" loading="lazy" decoding="async" width="1200" height="1600">
+                        <figcaption>Vista da plateia, pouco antes de começar.</figcaption>
+                    </figure>
+                    <figure class="carousel-item">
+                        <img src="/images/mvpconf/palco-mvpconf.webp" alt="Palco iluminado com o letreiro MVP CONF UNIP" loading="lazy" decoding="async" width="900" height="1600">
+                        <figcaption>O letreiro do MVP Conf UNIP no palco principal.</figcaption>
+                    </figure>
+                    <figure class="carousel-item">
+                        <img src="/images/mvpconf/palco-abertura.webp" alt="Telão do MVP Conf durante a abertura do evento" loading="lazy" decoding="async" width="1400" height="933">
+                        <figcaption>Abertura do MVP Conf 2026.</figcaption>
+                    </figure>
+                </div>
+
+                <div class="carousel-nav">
+                    <button class="carousel-btn" type="button" data-carousel-prev aria-label="Foto anterior">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59Z" /></svg>
+                    </button>
+                    <div class="carousel-dots" role="tablist" aria-label="Navegação das fotos"></div>
+                    <button class="carousel-btn" type="button" data-carousel-next aria-label="Próxima foto">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6Z" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARREIRA -->
+    <section id="carreira" aria-label="carreira">
+        <h2>Carreira</h2>
+        <p class="lead">Como cheguei até aqui.</p>
+
+        <ol class="timeline">
+            <li class="timeline-item is-current">
+                <p class="timeline-role">Desenvolvedor .NET <span class="timeline-org">· Robbu</span></p>
+                <p class="timeline-period">jan. 2025 — atual · Tempo integral · São Paulo (remoto)</p>
+                <p>
+                    Desenvolvimento em .NET com foco em APIs: novas rotas, evolução de funcionalidades existentes e
+                    estabilidade do sistema. Também atuo em deploys e pipelines de CI/CD no Azure.
+                </p>
+            </li>
+            <li class="timeline-item">
+                <p class="timeline-role">Chatbots Developer Jr <span class="timeline-org">· Robbu</span></p>
+                <p class="timeline-period">fev. 2024 — fev. 2025 · Tempo integral</p>
+                <p>Desenvolvimento de chatbots e suporte técnico, com SQL e Docker no dia a dia.</p>
+            </li>
+            <li class="timeline-item">
+                <p class="timeline-role">Chatbots Developer <span class="timeline-org">· Robbu</span></p>
+                <p class="timeline-period">abr. 2023 — fev. 2024 · Estágio</p>
+                <p>Primeiro contato profissional com desenvolvimento: construção de chatbots e testes de API.</p>
+            </li>
+            <li class="timeline-item">
+                <p class="timeline-role">Análise e Desenvolvimento de Sistemas <span class="timeline-org">· Estácio</span></p>
+                <p class="timeline-period">jun. 2022 — jun. 2025 · Graduação concluída (média 9,6)</p>
+                <p>Formação em tecnologia, cursada em paralelo à atuação profissional.</p>
+            </li>
+        </ol>
     </section>
 
     <!-- ARTIGOS (links externos) -->
@@ -277,7 +473,7 @@
                 <ul class="meta">
                     <li>
                         <b>Código:</b>
-                        <span id="cred-docker">DFE971C0B85D5FEB</span>
+                        <span class="cred-code">DFE971C0B85D5FEB</span>
                     </li>
                     <li>
                         <b>URL:</b>
@@ -299,7 +495,7 @@
                 <ul class="meta">
                     <li>
                         <b>Código:</b>
-                        <span id="cred-docker">ca503b6c-6ba4-4b80-a9bf-4c390e68827d</span>
+                        <span class="cred-code">ca503b6c-6ba4-4b80-a9bf-4c390e68827d</span>
                     </li>
                     <li>
                         <b>URL:</b>
@@ -312,14 +508,14 @@
                 <div class="cert-head">
                     <img class="cert-img" src="/images/certfacul.png" alt="ADS - Estácio">
                     <div>
-                        <h4>Anásile e desenvolvimento de sistemas</h4>
+                        <h4>Análise e Desenvolvimento de Sistemas</h4>
                         <div class="issuer">Estácio • 07/2025</div>
                     </div>
                 </div>
                 <ul class="meta">
                     <li>
                         <b>Código:</b>
-                        <span id="cred-docker">1270.1270.1dbcd6a76e0f</span>
+                        <span class="cred-code">1270.1270.1dbcd6a76e0f</span>
                     </li>
                     <li>
                         <b>URL:</b>
@@ -339,7 +535,7 @@
                 <ul class="meta">
                     <li>
                         <b>Código:</b>
-                        <span id="cred-docker">2fbeb2661565186bbf8c5e297e47c9c57c049a4c</span>
+                        <span class="cred-code">2fbeb2661565186bbf8c5e297e47c9c57c049a4c</span>
                     </li>
                     <li>
                         <b>URL:</b>
@@ -359,7 +555,7 @@
                 <ul class="meta">
                     <li>
                         <b>Código:</b>
-                        <span id="cred-docker">26038b31-7b59-4d1e-b0f6-b7eae55eb56b</span>
+                        <span class="cred-code">26038b31-7b59-4d1e-b0f6-b7eae55eb56b</span>
                     </li>
                     <li>
                         <b>URL:</b>
@@ -379,7 +575,7 @@
                 <ul class="meta">
                     <li>
                         <b>Código:</b>
-                        <span id="cred-docker">UC-e718ec75-5eaa-4ab4-9986-ae553f4fda6b</span>
+                        <span class="cred-code">UC-e718ec75-5eaa-4ab4-9986-ae553f4fda6b</span>
                     </li>
                     <li>
                         <b>URL:</b>
@@ -399,7 +595,7 @@
                 <ul class="meta">
                     <li>
                         <b>Código:</b>
-                        <span id="cred-docker">UC-816b1b13-630f-408a-8ca2-15b0bc2593ed</span>
+                        <span class="cred-code">UC-816b1b13-630f-408a-8ca2-15b0bc2593ed</span>
                     </li>
                     <li>
                         <b>URL:</b>
@@ -419,7 +615,7 @@
                 <ul class="meta">
                     <li>
                         <b>Código:</b>
-                        <span id="cred-docker">51e16c7a-fcbe-4c14-8866-db01d8883e7d</span>
+                        <span class="cred-code">51e16c7a-fcbe-4c14-8866-db01d8883e7d</span>
                     </li>
                     <li>
                         <b>URL:</b>
@@ -439,7 +635,7 @@
                 <ul class="meta">
                     <li>
                         <b>Código:</b>
-                        <span id="cred-docker">d3a50b14-df04-40b7-950c-96dc0c7cad5a</span>
+                        <span class="cred-code">d3a50b14-df04-40b7-950c-96dc0c7cad5a</span>
                     </li>
                     <li>
                         <b>URL:</b>
@@ -459,7 +655,7 @@
                 <ul class="meta">
                     <li>
                         <b>Código:</b>
-                        <span id="cred-docker">4dcac0a2-ef39-4ebd-9491-1eaf96696e34</span>
+                        <span class="cred-code">4dcac0a2-ef39-4ebd-9491-1eaf96696e34</span>
                     </li>
                     <li>
                         <b>URL:</b>

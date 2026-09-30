@@ -26,8 +26,11 @@
     @RenderSection("Head", required: false)
 </head>
 <body>
+    <!-- Barra de progresso de leitura -->
+    <div class="read-progress" aria-hidden="true"><span></span></div>
+
     <!-- Header padrão (combina com o CSS que enviei) -->
-    <header>
+    <header id="site-header">
         <nav class="nav" aria-label="principal">
             <div class="brand" aria-label="logo">
                 <span class="dot" aria-hidden="true"></span>
@@ -37,12 +40,13 @@
             <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-links">
                 <span></span><span></span><span></span>
             </button>
-            <div class="links">
-                <a href="~/#Home">Home</a>
-                <a href="~/#work">Meus Trabalhos</a>
-                <a href="~/#articles">Artigos</a>
-                <a href="~/#certs">Certificações</a>
-                <a href="~/#contato">Contato</a>
+            <div class="links" id="main-links">
+                <a href="~/#home" data-spy="home">Home</a>
+                <a href="~/#work" data-spy="work">Meus Trabalhos</a>
+                <a href="~/#palestras" data-spy="palestras">Palestras</a>
+                <a href="~/#carreira" data-spy="carreira">Carreira</a>
+                <a href="~/#articles" data-spy="articles">Artigos</a>
+                <a href="~/#certs" data-spy="certs">Certificações</a>
                 <a href="/videos">Vídeos</a>
             </div>
         </nav>
