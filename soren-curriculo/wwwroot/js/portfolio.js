@@ -203,6 +203,56 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        // O scroll suave nativo nao anima neste container (scroll-snap + grid),
+        // entao a animacao e feita na mao escrevendo scrollLeft quadro a quadro.
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        let scrollAnimationId = null;
+
+        function scrollTrackTo(targetLeft) {
+            const maxLeft = track.scrollWidth - track.clientWidth;
+            const destination = Math.min(maxLeft, Math.max(0, targetLeft));
+
+            if (scrollAnimationId !== null) {
+                cancelAnimationFrame(scrollAnimationId);
+                scrollAnimationId = null;
+            }
+
+            // Aba oculta nao executa requestAnimationFrame: salta direto para o destino.
+            if (prefersReducedMotion || document.hidden) {
+                track.scrollLeft = destination;
+                syncControls();
+                return;
+            }
+
+            const startLeft = track.scrollLeft;
+            const distance = destination - startLeft;
+
+            if (Math.abs(distance) < 1) {
+                return;
+            }
+
+            const duration = 360;
+            const startTime = performance.now();
+
+            function step(now) {
+                const progress = Math.min(1, (now - startTime) / duration);
+                // easeOutCubic
+                const eased = 1 - Math.pow(1 - progress, 3);
+
+                track.scrollLeft = startLeft + distance * eased;
+
+                if (progress < 1) {
+                    scrollAnimationId = requestAnimationFrame(step);
+                    return;
+                }
+
+                scrollAnimationId = null;
+                syncControls();
+            }
+
+            scrollAnimationId = requestAnimationFrame(step);
+        }
+
         // Um ponto por slide, cada um navegando direto para o seu.
         const dots = slides.map(function (slide, index) {
             if (!dotsContainer) {
@@ -214,22 +264,28 @@ document.addEventListener("DOMContentLoaded", function () {
             dot.setAttribute("aria-label", "Ir para a foto " + (index + 1) + " de " + slides.length);
 
             dot.addEventListener("click", function () {
-                track.scrollTo({ left: slide.offsetLeft - track.offsetLeft, behavior: "smooth" });
+                scrollTrackTo(slide.offsetLeft - track.offsetLeft);
             });
+
 
             dotsContainer.appendChild(dot);
             return dot;
         });
 
+        function slideOffset(index) {
+            return slides[index].offsetLeft - track.offsetLeft;
+        }
+
         function currentIndex() {
-            // O slide ativo e o que estiver mais perto do centro da area visivel.
-            const center = track.scrollLeft + track.clientWidth / 2;
+            // O slide ativo e o primeiro visivel na borda esquerda: navegar avanca
+            // de um em um e continua funcionando no fim do trilho, onde o scroll
+            // para antes do ultimo slide alcancar o centro.
+            const left = track.scrollLeft;
             let closest = 0;
             let smallestDistance = Infinity;
 
             slides.forEach(function (slide, index) {
-                const slideCenter = slide.offsetLeft - track.offsetLeft + slide.offsetWidth / 2;
-                const distance = Math.abs(slideCenter - center);
+                const distance = Math.abs(slideOffset(index) - left);
 
                 if (distance < smallestDistance) {
                     smallestDistance = distance;
@@ -264,10 +320,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         function goTo(offset) {
-            const target = slides[Math.min(slides.length - 1, Math.max(0, currentIndex() + offset))];
+            const maxLeft = track.scrollWidth - track.clientWidth;
+            let index = currentIndex();
 
-            if (target) {
-                track.scrollTo({ left: target.offsetLeft - track.offsetLeft, behavior: "smooth" });
+            // No fim do trilho varios slides compartilham a mesma posicao de scroll,
+            // entao anda ate achar um destino que realmente mude o scroll.
+            while (index + offset >= 0 && index + offset < slides.length) {
+                index += offset;
+
+                const destination = Math.min(maxLeft, Math.max(0, slideOffset(index)));
+
+                if (Math.abs(destination - track.scrollLeft) >= 1) {
+                    scrollTrackTo(destination);
+                    return;
+                }
             }
         }
 

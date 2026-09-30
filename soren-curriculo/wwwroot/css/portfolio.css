@@ -1115,7 +1115,6 @@ header {
     gap: 14px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
     padding-bottom: 10px;
     scrollbar-width: thin;
     scrollbar-color: rgba(56, 189, 248, .35) transparent;
