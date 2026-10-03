@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "portfolio",
-      "runtimeExecutable": "dotnet",
-      "runtimeArgs": ["run", "--launch-profile", "http"],
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "5178", "--directory", "wwwroot"],
       "port": 5178
     }
   ]
